@@ -56,6 +56,7 @@ const winner = async() =>{
 }
 
 const gen = async()=>{
+    try{
     const val = await fetch(`https://the-trivia-api.com/v2/questions`);
     const data = await val.json();
     for(let i = 0;i<10;i++){
@@ -72,6 +73,10 @@ const gen = async()=>{
         await handleAns(ans.answer === data[i].correctAnswer,data[i].correctAnswer);
         console.log("\n\n");
     }
+}
+catch(err){
+    console.log(err)
+}
 
 }
 
